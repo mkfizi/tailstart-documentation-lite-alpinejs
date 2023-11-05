@@ -160,7 +160,7 @@
                         :aria-hidden="isNavbarMenuOpen ? false : true"
                         x-init="
                             $watch('isNavbarMenuOpen', isNavbarMenuOpen => { 
-                                if(isNavbarMenuOpen) {
+                                if (isNavbarMenuOpen) {
                                     forceFocus($el);
                                 }
                             })
@@ -169,7 +169,7 @@
                         "
                         @keydown.escape.window="isNavbarMenuOpen = false"
                         @keydown.tab.window="
-                            if(isNavbarMenuOpen) {
+                            if (isNavbarMenuOpen) {
                                 focusTrap($el, event);
                             }
                         "
@@ -308,7 +308,7 @@
             }"
             x-init="
                 $watch('isSidebarMenuOpen', isSidebarMenuOpen => { 
-                    if(isSidebarMenuOpen) {
+                    if (isSidebarMenuOpen) {
                         forceFocus($el);
                     }
                 })
@@ -318,7 +318,7 @@
             "
             @keydown.escape.window="isSidebarMenuOpen = false"
             @keydown.tab.window="
-                if(isSidebarMenuOpen) {
+                if (isSidebarMenuOpen) {
                     focusTrap($el, event);
                 }
             "
@@ -331,7 +331,7 @@
                 toggleResponsive($el);
             "
             @click.document="
-                if(clickOutside(event) === false) {
+                if (clickOutside(event) === false) {
                     isSidebarMenuOpen = false;
                 }
             "
