@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Tailstart - Documentation Lite (AlpineJS) v0.2.0: app.js
+ * Tailstart - Documentation Lite (AlpineJS) v0.1.0: app.js
  * Licensed under MIT (https://github.com/mkfizi/tailstart-documentation-lite-alpinejs/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
