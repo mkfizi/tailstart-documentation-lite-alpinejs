@@ -433,8 +433,8 @@
                 >
                     <template x-for="link in links" hidden>
                         <li>
-                            <a class="block text-base" 
-                                :class="link.isActive ? 'font-bold text-black dark:text-white' : 'font-semibold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white'"
+                            <a class="block text-base hover:text-black dark:hover:text-white" 
+                                :class="link.isActive ? 'font-bold text-black dark:text-white' : 'font-semibold text-neutral-500 dark:text-neutral-400'"
                                 x-text="link.title"
                             ></a>
                             <ul class="mt-4 ml-4 space-y-3 marker:text-neutral-700 dark:marker:text-neutral-300">
