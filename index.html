@@ -6,7 +6,9 @@
         breakpointSize: 1024
     }"
     :class="theme == 'dark' ? 'dark' : ''"
-    :style="{ '--vh': viewportHeight}"
+    :style="{ 
+        '--vh': viewportHeight
+    }"
     @resize.window="viewportHeight = (window.innerHeight * 0.01) + 'px'"
 >
 <head>
@@ -156,7 +158,9 @@
 
                     <!-- Navbar menu -->
                     <div id="navbar-menu" class="fixed top-0 left-0 z-20 invisible hidden w-screen h-screen lg:block lg:visible bg-neutral-500/50 lg:bg-transparent lg:relative lg:w-auto lg:h-auto lg:left-auto lg:top-auto lg:z-0"
-                        :class="{ 'hidden invisible': !isNavbarMenuOpen }"
+                        :class="{ 
+                            'hidden invisible': !isNavbarMenuOpen 
+                        }"
                         :aria-hidden="isNavbarMenuOpen ? false : true"
                         x-init="
                             $watch('isNavbarMenuOpen', isNavbarMenuOpen => { 
@@ -196,16 +200,32 @@
                             </button>
                             
                             <!-- Navbar menu link -->
-                            <ul class="space-y-4 lg:space-y-0 lg:flex lg:gap-8">
-                                <li>
-                                    <a href="#" class="block font-semibold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white">Examples</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="block font-semibold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white">Showcases</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="block font-semibold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white">Developers</a>
-                                </li>
+                            <ul class="space-y-4 lg:space-y-0 lg:flex lg:gap-8"
+                                x-data="{
+                                    links: [
+                                        { 
+                                            url: '#', 
+                                            title: 'Examples'
+                                        },
+                                        { 
+                                            url: '#', 
+                                            title: 'Showcases'
+                                        },
+                                        { 
+                                            url: '#', 
+                                            title: 'Developers'
+                                        }
+                                    ]
+                                }"
+                            >
+                                <template x-for="link in links" hidden>
+                                    <li>
+                                        <a class="block font-semibold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white" 
+                                            :href="link.url"
+                                            x-text="link.title"
+                                        ></a>
+                                    </li>
+                                </template>
                             </ul>
 
                         </div>
@@ -353,54 +373,84 @@
                 </button>
 
                 <!-- Sidebar menu link -->
-                <ul class="space-y-6">
-                    <li class="space-y-4">
-                        <a href="#" class="block text-base font-bold text-black dark:text-white">Getting Started</a>
-                        <ul class="ml-4 space-y-3 marker:text-neutral-700 dark:marker:text-neutral-300">
-                            <li>
-                                <a href="#overview" class="block text-base hover:text-black hover:dark:text-white"
-                                    :class="isSectionActive[`${$el.getAttribute('href').substring(1)}`] ? 'text-black dark:text-white font-semibold' : 'text-neutral-500 dark:text-neutral-400'"
-                                >Overview</a>
-                            </li>
-                            <li>
-                                <a href="#customization" class="block text-base hover:text-black hover:dark:text-white"
-                                    :class="isSectionActive[`${$el.getAttribute('href').substring(1)}`] ? 'text-black dark:text-white font-semibold' : 'text-neutral-500 dark:text-neutral-400'"
-                                >Customization</a>
-                            </li>
-                            <li>
-                                <a href="#deployment" class="block text-base hover:text-black hover:dark:text-white"
-                                    :class="isSectionActive[`${$el.getAttribute('href').substring(1)}`] ? 'text-black dark:text-white font-semibold' : 'text-neutral-500 dark:text-neutral-400'"
-                                >Deployment</a>
-                            </li>
-                            <li>
-                                <a href="#best-practices" class="block text-base hover:text-black hover:dark:text-white"
-                                    :class="isSectionActive[`${$el.getAttribute('href').substring(1)}`] ? 'text-black dark:text-white font-semibold' : 'text-neutral-500 dark:text-neutral-400'"
-                                >Best Practices</a>
-                            </li>
-                            <li>
-                                <a href="#summary" class="block text-base hover:text-black hover:dark:text-white"
-                                    :class="isSectionActive[`${$el.getAttribute('href').substring(1)}`] ? 'text-black dark:text-white font-semibold' : 'text-neutral-500 dark:text-neutral-400'"
-                                >Summary</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="block text-base font-semibold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white">The Basics</a>
-                    </li>
-                    <li>
-                        <a href="#" class="block text-base font-semibold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white">API References</a>
-                    </li>
-                    <li>
-                        <a href="#" class="block text-base font-semibold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white">External Resources</a>
-                    </li>
-                    <li>
-                        <a href="#" class="block text-base font-semibold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white">Troubleshooting</a>
-                    </li>
-                    <li>
-                        <a href="#" class="block text-base font-semibold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white">Contributing</a>
-                    </li>
-                </ul>
-                
+                <ul class="space-y-6" 
+                    x-data="{
+                        links: [
+                            {
+                                url: '#',
+                                title: 'Getting Started',
+                                isActive: true,
+                                groups: [
+                                    {
+                                        url: '#overview',
+                                        title: 'Overview',
+                                    },
+                                    {
+                                        url: '#customization',
+                                        title: 'Customization',
+                                    },
+                                    {
+                                        url: '#deployment',
+                                        title: 'Deployment',
+                                    },
+                                    {
+                                        url: '#best-practices',
+                                        title: 'Best Practices',
+                                    },
+                                    {
+                                        url: '#summary',
+                                        title: 'Summary',
+                                    },
+                                ]
+                            },
+                            {
+                                url: '#',
+                                title: 'The Basics',
+                                isActive: false,
+                            },
+                            {
+                                url: '#',
+                                title: 'API References',
+                                isActive: false,
+                            },
+                            {
+                                url: '#',
+                                title: 'External Resources',
+                                isActive: false,
+                            },
+                            {
+                                url: '#',
+                                title: 'Troubleshooting',
+                                isActive: false,
+                            },
+                            {
+                                url: '#',
+                                title: 'Contributing',
+                                isActive: false,
+                            }
+                        ]
+                    }"
+                >
+                    <template x-for="(link, index) in links" hidden>
+                        <li>
+                            <a class="block text-base " 
+                                :class="link.isActive ? 'font-bold text-black dark:text-white' : 'font-semibold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white'"
+                                x-text="link.title"
+                            ></a>
+                            <ul class="mt-4 ml-4 space-y-3 marker:text-neutral-700 dark:marker:text-neutral-300">
+                                <template x-for="group in link.groups" hidden>
+                                    <li>
+                                        <a class="block text-base hover:text-black hover:dark:text-white"
+                                            :href="group.url"
+                                            :class="isSectionActive[`${$el.getAttribute('href').substring(1)}`] ? 'text-black dark:text-white font-semibold' : 'text-neutral-500 dark:text-neutral-400'"
+                                            x-text="group.title"
+                                        ></a>
+                                    </li>
+                                </template>
+                            </ul>
+                        </li>
+                    </template>
+                </ul> 
             </div>
         </aside>
 
@@ -482,7 +532,7 @@
                         <p class="text-base text-neutral-700 dark:text-neutral-300"><strong>Testing:</strong> mplement testing frameworks like Jest, Cypress, or Mocha to validate the functionality of your application and ensure code reliability.</p>
                     </li>
                     <li class="pl-2">
-                        <p class="text-base text-neutral-700 dark:text-neutral-300"><strong>Performance Optimization::</strong> Regularly audit and optimize your project for performance. Compress images, lazy-load assets, and follow web performance best practices.</p>
+                        <p class="text-base text-neutral-700 dark:text-neutral-300"><strong>Performance Optimization:</strong> Regularly audit and optimize your project for performance. Compress images, lazy-load assets, and follow web performance best practices.</p>
                     </li>
                 </ul>
             </section>

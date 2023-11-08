@@ -616,6 +616,14 @@ video {
   top: 1rem;
 }
 
+.-top-6 {
+  top: -1.5rem;
+}
+
+.top-12 {
+  top: 3rem;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -631,6 +639,18 @@ video {
 
 .ml-4 {
   margin-left: 1rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mt-0 {
+  margin-top: 0px;
+}
+
+.-mt-6 {
+  margin-top: -1.5rem;
 }
 
 .block {
@@ -728,6 +748,14 @@ video {
   list-style-type: disc;
 }
 
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
 .items-center {
   align-items: center;
 }
@@ -744,8 +772,16 @@ video {
   gap: 1rem;
 }
 
+.gap-6 {
+  gap: 1.5rem;
+}
+
 .gap-8 {
   gap: 2rem;
+}
+
+.gap-3 {
+  gap: 0.75rem;
 }
 
 .space-y-16 > :not([hidden]) ~ :not([hidden]) {
@@ -776,6 +812,12 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+
+.space-y-0 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0px * var(--tw-space-y-reverse));
 }
 
 .divide-y > :not([hidden]) ~ :not([hidden]) {
@@ -938,6 +980,24 @@ body{
 
 .marker\:text-neutral-700::marker {
   color: rgb(64 64 64 );
+}
+
+.first\:my-0:first-child {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.first\:mb-0:first-child {
+  margin-bottom: 0px;
+}
+
+.first\:mt-0:first-child {
+  margin-top: 0px;
+}
+
+.last\:my-20:last-child {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
 }
 
 .hover\:text-black:hover {
