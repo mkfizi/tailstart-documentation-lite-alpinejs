@@ -431,7 +431,7 @@
                         ]
                     }"
                 >
-                    <template x-for="(link, index) in links" hidden>
+                    <template x-for="link in links" hidden>
                         <li>
                             <a class="block text-base " 
                                 :class="link.isActive ? 'font-bold text-black dark:text-white' : 'font-semibold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white'"
