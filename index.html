@@ -205,23 +205,27 @@
                                     links: [
                                         { 
                                             url: '#', 
-                                            title: 'Examples'
+                                            title: 'Examples',
+                                            isCurrentPage: false
                                         },
                                         { 
                                             url: '#', 
-                                            title: 'Showcases'
+                                            title: 'Showcases',
+                                            isCurrentPage: false
                                         },
                                         { 
                                             url: '#', 
-                                            title: 'Developers'
+                                            title: 'Developers',
+                                            isCurrentPage: false
                                         }
                                     ]
                                 }"
                             >
                                 <template x-for="link in links" hidden>
                                     <li>
-                                        <a class="block font-semibold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white" 
+                                        <a class="block font-semibold hover:text-black dark:hover:text-white" 
                                             :href="link.url"
+                                            :class="link.isCurrentPage ? 'text-black dark:text-white' : 'text-neutral-500 dark:text-neutral-400'"
                                             x-text="link.title"
                                         ></a>
                                     </li>
